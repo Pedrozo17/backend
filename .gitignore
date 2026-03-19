@@ -1,0 +1,6 @@
+# Archivos de configuración sensibles
+.env
+config/serviceAccountKey.json
+__pycache__/
+venv/
+db.sqlite3
