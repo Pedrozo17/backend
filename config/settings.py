@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # aplicaciones nuevas
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     'backend',
     'drf_spectacular'
 ]

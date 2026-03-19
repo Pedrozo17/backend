@@ -28,6 +28,7 @@ class FirebaseAuthentication(BaseAuthentication):
             uid = decoded_token.get('uid')
             email = decoded_token.get('email')
             user_profile = db.collection('perfil').document(uid).get()
+            foto_url = user_profile.to_dict().get("foto_url", "sin foto") if user_profile.exists else "sin foto"
             rol = user_profile.to_dict().get('rol', 'aprendiz') if user_profile.exists else 'aprendiz'
             # usuario
 
@@ -36,6 +37,7 @@ class FirebaseAuthentication(BaseAuthentication):
                     self.uid = uid
                     self.rol = rol
                     self.email = email
+                    self.foto_url = foto_url
                     self.is_authenticated = True
 
             return (FirebaseUser(uid), decoded_token)
