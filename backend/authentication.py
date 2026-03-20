@@ -27,11 +27,19 @@ class FirebaseAuthentication(BaseAuthentication):
             decoded_token = auth.verify_id_token(token)
             uid = decoded_token.get('uid')
             email = decoded_token.get('email')
+        except Exception as e:
+            print(f"❌ Error validando token Firebase: {e}")  # 👈 agrega esto
+            raise AuthenticationFailed('Token no válido o expirado')
+        try:
             user_profile = db.collection('perfil').document(uid).get()
             foto_url = user_profile.to_dict().get("foto_url", "sin foto") if user_profile.exists else "sin foto"
             rol = user_profile.to_dict().get('rol', 'aprendiz') if user_profile.exists else 'aprendiz'
             # usuario
-
+        except Exception as e:
+         print(f"❌ Error consultando Firestore: {e}")  # 👈 y esto
+         foto_url = "sin foto"  # fallback en vez de romper todo
+         rol = "aprendiz"
+        try:
             class FirebaseUser:
                 def __init__(self,uid):
                     self.uid = uid

@@ -9,6 +9,7 @@ from .authentication import FirebaseAuthentication
 from config.firebase_config import get_firestore_client
 
 class PerfilAPIView(APIView):
+    authentication_classes = [FirebaseAuthentication] 
     permission_classes = [IsAuthenticated]
 
     def get(self, request):

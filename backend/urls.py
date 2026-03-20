@@ -9,5 +9,5 @@ urlpatterns = [
     path('tareas/', TareasAPIView.as_view(), name='api_tareas'),
     path('tareas/<str:tarea_id>/', TareasAPIView.as_view(), name='api_tarea_detalle'),
     path('perfil/foto/', PerfilImagenAPIView.as_view(),name='api_perfil_foto'),
-    path('perfils/', PerfilAPIView.as_view())
+    path('perfil/', PerfilAPIView.as_view())
 ]
