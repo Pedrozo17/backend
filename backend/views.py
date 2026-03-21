@@ -31,7 +31,7 @@ class TareasAPIView(APIView):
             mensaje = "listando como rol de instructor"
         else:
             # se filtra por su uid
-            query = db.collection('api_tareas').where('usario_id', '==', uid)
+            query = db.collection('api_tareas').where('usuario_id', '==', uid)
             mensaje = "listando como aprendiz"
         #ordenar
 
